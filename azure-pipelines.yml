@@ -50,4 +50,37 @@ stages:
         commandOptions: 'fmt'
         outputTo: 'console'
         environmentServiceNameAzureRM: 'studentAccount'
+
+#Stage3 init,Plan and Apply
+- stage: init_in_3rd_Stage
+  displayName: Terraform init
+  jobs:
+    - job: Terraform_init
+      steps:
+        - task: TerraformTask@5
+          displayName: init
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'studentAccount'
+            backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+            backendAzureRmStorageAccountName: 'pipelinestoragerg'
+            backendAzureRmContainerName: 'pipelinestoragerg'
+            backendAzureRmKey: 'prod.tfstate'
+        
+        - task: TerraformTask@5
+          displayName: plan
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'studentAccount'
+
+        - task: TerraformTask@5
+          displayName: Apply
+          inputs:
+            provider: 'azurerm'
+            command: 'custom'
+            outputTo: 'console'
+            customCommand: 'apply -auto-approve'
+            environmentServiceNameAzureRM: 'studentAccount'
     
