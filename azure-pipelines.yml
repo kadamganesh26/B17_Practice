@@ -23,7 +23,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'
+        workingDirectory: workingDirectory:'$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
@@ -41,14 +41,14 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)'#My code location on the github
+        workingDirectory: '$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'#My code location on the github
     - task: TerraformTask@5
       displayName: Terraform Format (FMT)
       inputs:
         provider: 'azurerm'
         command: 'custom'
-        commandOptions: 'fmt'
         outputTo: 'console'
+        customCommand: 'fmt'
         environmentServiceNameAzureRM: 'studentAccount'
 
 #Stage3 init,Plan and Apply
@@ -83,6 +83,6 @@ stages:
         #     provider: 'azurerm'
         #     command: 'custom'
         #     outputTo: 'console'
-        #     customCommand: 'apply -auto-approve'
+        #     customCommand: ' -auto-approve'
         #     environmentServiceNameAzureRM: 'studentAccount'
     
