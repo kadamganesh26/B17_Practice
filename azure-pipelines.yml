@@ -29,6 +29,7 @@ stages:
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
         backendAzureRmContainerName: 'blobcontainer'
         backendAzureRmKey: 'prod.tfstate'
+        terraformBinaryPath: 'D:\\DevOps\\Environment_Variables\\terraform_1.12.2_windows_amd64\\terraform.exe'
     
 
 # # Stage 2: Terraform Validate
