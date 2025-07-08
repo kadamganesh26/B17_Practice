@@ -1,13 +1,15 @@
 trigger:
 - main
 
-pool: Default
+pool: 
+ vmImage: 'ubuntu-latest'
+
 steps:
 - checkout: self
 - task: TerraformInstaller@1
   displayName: Install_Terraform
   inputs:
-    terraformVersion: 'latest'
+    terraformVersion: '1.11.3'
 
 - task: TerraformTask@5
   inputs:
