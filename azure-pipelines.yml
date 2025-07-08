@@ -74,7 +74,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Terrform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
+            workingDirectory: 'Terrform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
             environmentServiceNameAzureRM: 'studentAccount'
 
         # - task: TerraformTask@5
