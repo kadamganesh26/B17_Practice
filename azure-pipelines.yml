@@ -15,9 +15,6 @@ stages:
     displayName: Init Terraform
     steps:
     - checkout: self
-    - script: terraform -version
-      displayName: 'Check Terraform Version'
-
     # - task: TerraformInstaller@0
     #   displayName: 'Install Terraform'
     #   inputs:
