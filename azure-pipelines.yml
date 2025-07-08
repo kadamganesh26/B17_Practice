@@ -25,14 +25,11 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(terraformWorkingDirectory)'
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
         backendAzureRmContainerName: 'pipelinestoragerg'
         backendAzureRmKey: 'prod.tfstate'
-        useTerraformEnvironment: false
-        terraformBinaryPath: 'D:\\DevOps\\Environment_Variables\\terraform_1.12.2_windows_amd64\\terraform.exe'
 
 
 # # Stage 2: Terraform Validate
