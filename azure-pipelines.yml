@@ -1,10 +1,9 @@
-trigger:
-- main
+trigger: none
 
 pool: Default
 
 variables:
-  terraformWorkingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
+  terraformWorkingDirectory: $(System.DefaultWorkingDirectory)/Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
 
 # Stage 1: Terraform Init
 stages:
@@ -28,7 +27,7 @@ stages:
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
-        backendAzureRmContainerName: 'pipelinestoragerg'
+        backendAzureRmContainerName: 'blobcontainer'
         backendAzureRmKey: 'prod.tfstate'
 
 
@@ -40,7 +39,6 @@ stages:
     displayName: Validate Terraform
     steps:
     - checkout: self
-
     - task: TerraformInstaller@0
       displayName: 'Install Terraform'
       inputs:
