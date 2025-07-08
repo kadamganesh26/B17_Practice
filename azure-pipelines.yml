@@ -55,7 +55,7 @@ stages:
 - stage: init_in_3rd_Stage
   displayName: Terrform Plan
   jobs:
-    - job: Terraform_init
+    - job: Init_plan_apply
       steps:
         - task: TerraformTask@5
           displayName: init
@@ -69,12 +69,13 @@ stages:
             backendAzureRmContainerName: 'pipelinestoragerg'
             backendAzureRmKey: 'prod.tfstate'
         
-        # - task: TerraformTask@5
-        #   displayName: plan
-        #   inputs:
-        #     provider: 'azurerm'
-        #     command: 'plan'
-        #     environmentServiceNameAzureRM: 'studentAccount'
+        - task: TerraformTask@5
+          displayName: plan
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/Terrform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
+            environmentServiceNameAzureRM: 'studentAccount'
 
         # - task: TerraformTask@5
         #   displayName: Apply
