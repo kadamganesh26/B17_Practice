@@ -23,7 +23,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
+        workingDirectory: '$(System.DefaultWorkingDirectory)'
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
@@ -41,7 +41,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod' #My code location on the github
+        workingDirectory: '$(System.DefaultWorkingDirectory)' #My code location on the github
     - task: TerraformTask@5
       displayName: Terraform Format (FMT)
       inputs:
