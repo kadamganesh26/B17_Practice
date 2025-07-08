@@ -23,7 +23,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: workingDirectory:'$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'
+        workingDirectory: '$(terraformWorkingDirectory)'
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
@@ -41,7 +41,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'#My code location on the github
+        workingDirectory: '$(terraformWorkingDirectory)'#My code location on the github
     - task: TerraformTask@5
       displayName: Terraform Format (FMT)
       inputs:
@@ -62,7 +62,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
-            workingDirectory: '$(System.DefaultWorkingDirectory)'
+            workingDirectory: '$(terraformWorkingDirectory)'
             backendServiceArm: 'studentAccount'
             backendAzureRmResourceGroupName: 'NetworkWatcherRG'
             backendAzureRmStorageAccountName: 'pipelinestoragerg'
@@ -74,7 +74,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'
+            workingDirectory: '$(terraformWorkingDirectory)'
             environmentServiceNameAzureRM: 'studentAccount'
 
         # - task: TerraformTask@5
