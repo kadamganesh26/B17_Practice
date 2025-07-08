@@ -22,11 +22,9 @@ stages:
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
-        command: 'custom'
+        command: 'init'
         workingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
-        commandOptions: 'TerraformCLI@5'
-        outputTo: 'console'
-        environmentServiceNameAzureRM: 'studentAccount'
+        backendServiceArm: 'studentAccount'
 
 #Stage2 Terraform Validate
 - stage: validate
