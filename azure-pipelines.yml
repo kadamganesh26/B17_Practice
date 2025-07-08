@@ -24,7 +24,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        commandOptions: '$(System.DefaultWorkingDirectory)'
+        commandOptions: '$(terraformWorkingDirectory)'
         backendServiceArm: 'studentAccount'
         backendAzureRmResourceGroupName: 'NetworkWatcherRG'
         backendAzureRmStorageAccountName: 'pipelinestoragerg'
