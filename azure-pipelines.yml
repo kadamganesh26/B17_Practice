@@ -60,6 +60,12 @@ stages:
         outputTo: 'console'
         customCommand: 'fmt'
         environmentServiceNameAzureRM: 'studentAccount'
+    - task: TerraformTask@5
+      displayName: Plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'studentAccount'
 
 # # Stage 3: Plan (Apply is optional and commented out)
 # - stage: plan
