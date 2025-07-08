@@ -1,8 +1,7 @@
 trigger:
 - main
 
-pool:
-  vmImage: 'windows-latest'
+pool: Default
 
 variables:
   terraformWorkingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
