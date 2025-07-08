@@ -3,7 +3,7 @@ trigger:
 
 pool: 
   vmImage: 'windows-latest'
-
+  
 variables:
   terraformWorkingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod' #My code location on the github
 
