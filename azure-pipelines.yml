@@ -1,10 +1,12 @@
 trigger:
-- main
+ branches:
+  include:
+    - main
 
 pool: Default
   
 variables:
-  terraformWorkingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod' #My code location on the github
+  terraformWorkingDirectory: $(System.DefaultWorkingDirectory)/Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod #My code location on the github
 
 #Stage1 Terraform Init 
 stages:  
