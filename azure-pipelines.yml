@@ -1,9 +1,7 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-
+pool: Default
 steps:
 - checkout: self
 - task: TerraformInstaller@1
