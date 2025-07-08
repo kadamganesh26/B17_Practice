@@ -32,36 +32,34 @@ stages:
         backendAzureRmKey: 'prod.tfstate'
 
 
-# # Stage 2: Terraform Validate
-# - stage: validate
-#   displayName: Terraform Validate
-#   jobs:
-#   - job: ValidateJob
-#     displayName: Validate Terraform
-#     steps:
-#     - checkout: self
+# Stage 2: Terraform Validate
+- stage: validate
+  displayName: Terraform Validate
+  jobs:
+  - job: ValidateJob
+    displayName: Validate Terraform
+    steps:
+    - checkout: self
 
-#     - task: TerraformInstaller@0
-#       displayName: 'Install Terraform'
-#       inputs:
-#         terraformVersion: '1.6.6'
+    - task: TerraformInstaller@0
+      displayName: 'Install Terraform'
+      inputs:
+        terraformVersion: '1.6.6'
 
-#     - task: TerraformTaskV4@4
-#       displayName: 'Terraform Validate'
-#       inputs:
-#         provider: 'azurerm'
-#         command: 'validate'
-#         workingDirectory: '$(terraformWorkingDirectory)'
+    - task: TerraformTaskV4@4
+      displayName: 'Terraform Validate'
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
 
-#     - task: TerraformTaskV4@4
-#       displayName: 'Terraform Format (FMT)'
-#       inputs:
-#         provider: 'azurerm'
-#         command: 'custom'
-#         outputTo: 'console'
-#         customCommand: 'fmt'
-#         workingDirectory: '$(terraformWorkingDirectory)'
-#         environmentServiceNameAzureRM: 'studentAccount'
+    - task: TerraformTaskV4@4
+      displayName: 'Terraform Format (FMT)'
+      inputs:
+        provider: 'azurerm'
+        command: 'custom'
+        outputTo: 'console'
+        customCommand: 'fmt'
+        environmentServiceNameAzureRM: 'studentAccount'
 
 # # Stage 3: Plan (Apply is optional and commented out)
 # - stage: plan
