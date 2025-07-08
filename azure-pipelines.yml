@@ -37,6 +37,10 @@ stages:
   - job: ValidateJob
     steps:
     - checkout: self
+    - task: TerraformInstaller@0
+      displayName: Install Terraform
+      inputs:
+        terraformVersion: '1.6.6'
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
@@ -57,25 +61,30 @@ stages:
   jobs:
     - job: Init_plan_apply
       steps:
-        - task: TerraformTask@5
-          displayName: init
-          inputs:
-            provider: 'azurerm'
-            command: 'init'
-            workingDirectory: '$(terraformWorkingDirectory)'
-            backendServiceArm: 'studentAccount'
-            backendAzureRmResourceGroupName: 'NetworkWatcherRG'
-            backendAzureRmStorageAccountName: 'pipelinestoragerg'
-            backendAzureRmContainerName: 'pipelinestoragerg'
-            backendAzureRmKey: 'prod.tfstate'
+      - checkout: self
+      - task: TerraformInstaller@0
+        displayName: Install Terraform
+        inputs:
+          terraformVersion: '1.6.6'
+      - task: TerraformTask@5
+        displayName: init
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(terraformWorkingDirectory)'
+          backendServiceArm: 'studentAccount'
+          backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+          backendAzureRmStorageAccountName: 'pipelinestoragerg'
+          backendAzureRmContainerName: 'pipelinestoragerg'
+          backendAzureRmKey: 'prod.tfstate'
         
-        - task: TerraformTask@5
-          displayName: plan
-          inputs:
-            provider: 'azurerm'
-            command: 'plan'
-            workingDirectory: '$(terraformWorkingDirectory)'
-            environmentServiceNameAzureRM: 'studentAccount'
+      - task: TerraformTask@5
+        displayName: plan
+        inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          workingDirectory: '$(terraformWorkingDirectory)'
+          environmentServiceNameAzureRM: 'studentAccount'
 
         # - task: TerraformTask@5
         #   displayName: Apply
