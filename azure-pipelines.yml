@@ -25,6 +25,10 @@ stages:
         command: 'init'
         workingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod'
         backendServiceArm: 'studentAccount'
+        backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+        backendAzureRmStorageAccountName: 'pipelinestoragerg'
+        backendAzureRmContainerName: 'pipelinestoragerg'
+        backendAzureRmKey: 'prod.tfstate'
 
 #Stage2 Terraform Validate
 - stage: validate
