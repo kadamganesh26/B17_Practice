@@ -41,7 +41,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'validate'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/$(terraformWorkingDirectory)'#My code location on the github
+        workingDirectory: '$(System.DefaultWorkingDirectory)'#My code location on the github
     - task: TerraformTask@5
       displayName: Terraform Format (FMT)
       inputs:
