@@ -11,8 +11,8 @@ variables:
 stages:  
 - stage : init 
   displayName: Terraform Init
-  jobs: 
-  - job: 
+  jobs:  
+  - job: Terraform_Init 
     steps:
     - checkout: self 
     - task: TerraformInstaller@0
