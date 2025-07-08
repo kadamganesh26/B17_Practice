@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool: 
-  vmImage: 'windows-latest'
+  Default: 'GK'
   
 variables:
   terraformWorkingDirectory: 'Terraform/Landing_Zone_Monolithic_Services_Infra/Env/Prod' #My code location on the github
