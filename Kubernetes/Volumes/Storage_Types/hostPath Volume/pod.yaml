@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: frontendpod
+spec:
+  containers: 
+  - name: frontendpod
+    image: microservices07032025.azurecr.io/frontendimage:v2
+    ports:
+      - containerPort: 80
+        protocol: TCP
+    volumeMounts:
+      - mountPath: /app/hostdata
+        name: hostpath-local-storage 
+  volumes: 
+    - name: hostpath-local-storage 
+      hostPath:
+        path: data/on/local/node
+
+# It mounts a directory from the node’s local disk into the pod.
+# It only works if the pod runs on that specific node.
+# We can use this when node wants to use local logs pod
+# We can use the shared this data with multi node cluster.

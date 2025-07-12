@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: frontendpod
+spec: 
+  containers:
+    - name: configmap
+      image: microservices07032025.azurecr.io/frontendimage:v2
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /app/data
+          name: configmap-volume 
+  volumes: 
+  - name: configmap-volume
+    configMap: 
+      name: myconfig
+
+# With this we can inject the configuration details to the containers
+# We can keep the sensetive data mainly config or secrets using this resources
+# In this yaml file i have created seprate configmap resource and mapped it to the pod
