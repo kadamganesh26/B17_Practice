@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: frontendpod
+spec:
+  containers:
+  - image: microservices07032025.azurecr.io/frontendimage:v2
+    name: fronendcontainer
+    volumeMounts: 
+    - mountPath: /app/famphoto
+      name: temp-storage
+    ports:
+      - containerPort: 80
+        protocol: TCP
+
+  volumes: 
+  - name: temp-storage
+    emptyDir: {}
+    
+
+# emptyDir Volume is attahed to the Pod lifecycle
+# If pod delete or restate storege will be deleted.
+# We can uset this emtydir for temporary storage. 
+
+
+
+  
+   
+      
