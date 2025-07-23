@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bhondu
+  labels:
+    todo: app
+spec:
+  containers:
+  - name: bhondu-container
+    image: microservices07032025.azurecr.io/bhondu:v1
+    ports:
+      - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sindhu
+  labels:
+    todo: app
+spec:
+  containers:
+  - name: bhondu-container
+    image: microservices07032025.azurecr.io/sindhu:v1
+    ports:
+      - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tondu
+  labels:
+    todo: app
+spec:
+  containers:
+  - name: bhondu-container
+    image: microservices07032025.azurecr.io/tondu:v1
+    ports:
+      - containerPort: 80
+
