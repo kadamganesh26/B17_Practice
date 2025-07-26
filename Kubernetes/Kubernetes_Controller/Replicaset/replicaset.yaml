@@ -1,0 +1,19 @@
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    name: dhondu-replicaset
+  spec:
+    replicas: 5
+    selector: 
+      matchLabels:
+        app: raghav
+    template: 
+      metadata:
+        name: nginx
+        labels: 
+          app: raghav
+      spec:
+        containers: 
+          - name: nginx
+            image: nginx
+
